@@ -29,7 +29,8 @@ describe('fetchData', ()  =>{
        const data = await fetchData('http://jsonplaceholder.typicode.com/todos/1');
 
         //Assert
-        
+      expect(data).toEqual(mockResponse);
+      expect(fetch).toHaveBeenCalledWith('http://jsonplaceholder.typicode.com/todos/1');
 
     });
 });
