@@ -33,6 +33,16 @@ describe('fetchData', ()  =>{
       expect(fetch).toHaveBeenCalledWith('http://jsonplaceholder.typicode.com/todos/1');
 
     });
+
+    //second test case for negative testing
+    it('should throw an error when response is not okay', async ()=>{
+
+        //Assemble & Action
+        fetch.mockResolvedValueOnce({ok: false});
+
+        //Assert
+        await expect(fetchData('http://jsonplaceholder.typicode.com/todos/1')).rejects.toThrow('There was a networking error');
+    });
 });
 
 
