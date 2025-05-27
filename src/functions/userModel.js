@@ -22,4 +22,4 @@ const createUser = async (firstName,email,password,age) =>{
     }
 };
 
-module.exports = {User, createUser};
+module.exports = { User, createUser };
