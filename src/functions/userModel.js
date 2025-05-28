@@ -12,10 +12,10 @@ const userSchema = new mongoose.Schema({
 const User = new mongoose.model('User', userSchema);
 
 //Controller function
-const createUser = async (firstName,email,password,age) =>{
+const createUser = async (firstName, email, password, age) => {
     try {
         const user = new User({firstName, email, password, age});
-        user.save();
+        await user.save(); // Add await here
         return user;
     } catch (error) {
         throw new Error('Something went wrong creating a new user!');
