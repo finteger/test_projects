@@ -18,11 +18,11 @@ describe('User Model Test', () => {
         }
 
         //Action
-        const result1 = jest.spyOn(User.prototype, 'save').mockResolvedValue(mockUser);
+        jest.spyOn(User.prototype, 'save').mockResolvedValue(mockUser);
         const result2 = new createUser('Todd Nash', 'todd.nash@rdpolytech', 'password', 100);
 
         //Assert
-        expect(result1).toEqual(result2);
+        expect(result1).toEqual(expect.objectContaining(mockUser));
         expect(User.prototype.save()).toHaveBeenCalledTimes(1);
 
     });
