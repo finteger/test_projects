@@ -13,19 +13,22 @@
         </form>
 
         <script>
-            let isSubmittedSuccessfully = false;
+            let submissionCount = 0;
+            const MAX_ATTEMPTS = 3;
 
             function loginSubmit(event){
                 event.preventDefault();
 
-                //check if the form has been submitted already
-                if(isSubmittedSuccessfully){
+                //check if the form has been submitted too many times
+                if(submissionCount >= MAX_ATTEMPTS){
                     alert('You have submitted too many times');
                     return;
                 }
                 
                 const email = document.getElementById("email").value;
                 const password = document.getElementById("password").value;
+
+                submissionCount++;
 
                 if(email == "test@example.com"  && password == "password"){
                     alert('Login Successful!');
