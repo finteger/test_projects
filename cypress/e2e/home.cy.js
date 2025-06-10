@@ -36,4 +36,20 @@ describe('test cases for login form', () => {
     });
   });
 
+  //simulate some one logging in too many times. brute force testing
+  it('check for multiple failed login attempts', ()=>{
+
+    for(let i = 0; i < 5; i++){
+     //Arrange
+    cy.get('#email').type('test@example.com');
+    cy.get('#password').type('password123123');
+    //Action
+    cy.get('#login-button').click();
+    }
+
+    //Assert
+    cy.on('window:alert', (txt) =>{
+      expect(txt).to.contains('You have submitted too many times');
+    });
+  });
 });
