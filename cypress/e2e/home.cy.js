@@ -20,4 +20,20 @@ describe('test cases for login form', () => {
       expect(txt).to.contains('Login Successful!');
     });
   });
+
+  //Negative test using the AAA pattern
+  it('should display error message if password is wrong', () =>{
+    //Arrange
+    cy.get('#email').type('test@example.com');
+    cy.get('#password').type('password123123');
+
+    //Action
+    cy.get('#login-button').click();
+
+    //Assert
+    cy.on('window:alert', (txt) =>{
+      expect(txt).to.contains('login unsuccessful! please try again!');
+    });
+  });
+
 });
