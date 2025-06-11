@@ -1,22 +1,26 @@
 name: Run Cypress Tests
 on: [push, pull_request]
 jobs:
-  test:  
+  test:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-        - name: Setup Node.js
-          uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # specify a node version
 
-        - name: Install Dependencies
-          run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-        - name: Run Cypress Tests
-          uses: cypress-io/github-action@v6
-          with: 
-            build: npm run build
-            start: npm start
-            wait-on: 'http://localhost:3000'
-            runTests: true
+      - name: Build App
+        run: npm run build
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          runTests: true
