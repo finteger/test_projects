@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "build": "npm run build"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
